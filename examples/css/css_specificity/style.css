@@ -1,0 +1,11 @@
+/* Example 1 */
+#top-section { color: red; } /* Weight: 1-0-0 WINS because ID column is higher */
+.container, .paragraph, .green-text { color: orange; } /* Weight: 0-3-0 */
+
+/* Example 2 */
+#middle-div { color: green; /* Weight: 1-0-0 */ }
+#my-container [id="middle-section"] { color: blue; /* Weight: 1-1-0 WINS - ID column is tied but CLASS column is higher */ }
+
+/* Example 3 */
+div.red-text { color: yellow; /* Weight: 0-1-1 */ }
+:root span { color: purple; /* Weight: 0-1-1 WINS - tied weights but last encountered */ }
