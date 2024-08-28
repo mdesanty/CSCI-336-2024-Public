@@ -1,0 +1,17 @@
+div#background {
+  background-image: url("./vader.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
+}
+
+#shows img {
+  width: 90px;
+}
+
+.table {
+  opacity: 88%;
+}
