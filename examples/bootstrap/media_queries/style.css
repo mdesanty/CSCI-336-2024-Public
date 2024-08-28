@@ -1,0 +1,39 @@
+#message-container {
+  background-color: orange;
+  color: white;
+}
+
+@media only screen and (min-width: 300px) {
+  #message-container {
+    background-color: red;
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #message-container {
+    background-color: purple;
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  #message-container {
+    background-color: green;
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #message-container {
+    background-color: blue;
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  #message-container {
+    background-color: teal;
+    color: white;
+  }
+}
