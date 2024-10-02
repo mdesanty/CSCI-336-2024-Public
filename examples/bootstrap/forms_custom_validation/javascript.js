@@ -7,8 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
       courseSelect.removeChild(defaultOption);
   });
 
-  const form = document.getElementById('my-form');
-  form.addEventListener('submit', handleSubmit);
+  document.getElementById('first-name-input').addEventListener('input', function() {
+    this.classList.remove('is-invalid');
+  });
+
+  document.getElementById('my-form').addEventListener('submit', handleSubmit);
 });
 
 function handleSubmit(event) {
@@ -38,14 +41,18 @@ function checkForm() {
   if(firstName == '') {
     firstNameFeedback.innerHTML = 'is required';
     firstNameInput.classList.add('is-invalid');
+    firstNameInput.classList.remove('is-valid');
   }
   else if(firstName.length > 20) {
     firstNameInput.classList.add('is-invalid');
     firstNameInput.classList.remove('is-valid');
     firstNameFeedback.innerHTML = 'is too long (maximum length 20)';
   }
-  else
+  else {
     isValid = true;
+    firstNameInput.classList.remove('is-invalid');
+    firstNameInput.classList.add('is-valid');
+  }
 
   return isValid;
 }
