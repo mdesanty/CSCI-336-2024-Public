@@ -26,8 +26,6 @@ function handleSubmit(event) {
 
     console.log(data);
   }
-
-
 }
 
 function checkForm() {
@@ -37,12 +35,11 @@ function checkForm() {
   const firstName = firstNameInput.value;
   const firstNameFeedback = document.getElementById('first-name-feedback');
 
-  if(firstName == ''){
+  if(firstName == '') {
     firstNameFeedback.innerHTML = 'is required';
     firstNameInput.classList.add('is-invalid');
   }
   else if(firstName.length > 20) {
-    alert('yo');
     firstNameInput.classList.add('is-invalid');
     firstNameInput.classList.remove('is-valid');
     firstNameFeedback.innerHTML = 'is too long (maximum length 20)';
