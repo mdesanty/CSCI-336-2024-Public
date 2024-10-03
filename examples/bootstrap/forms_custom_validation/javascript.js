@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function handleSubmit(event) {
-  const form = event.target;
-
   event.preventDefault();
   event.stopPropagation();
 
@@ -44,9 +42,9 @@ function checkForm() {
     firstNameInput.classList.remove('is-valid');
   }
   else if(firstName.length > 20) {
+    firstNameFeedback.innerHTML = 'is too long (maximum length 20)';
     firstNameInput.classList.add('is-invalid');
     firstNameInput.classList.remove('is-valid');
-    firstNameFeedback.innerHTML = 'is too long (maximum length 20)';
   }
   else {
     isValid = true;

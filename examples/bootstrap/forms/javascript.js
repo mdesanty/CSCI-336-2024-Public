@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('test');
-
   const courseSelect = document.getElementById('course-select');
   courseSelect.addEventListener('change', function() {
     const defaultOption = document.getElementById('default-course-option');
