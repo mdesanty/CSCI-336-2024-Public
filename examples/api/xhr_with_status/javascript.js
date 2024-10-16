@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-  getActivity();
+  getCatFact();
 });
 
-const getActivity = () => {
+const getCatFact = () => {
   // Initialize the object.
   const xhr = new XMLHttpRequest();
 
@@ -13,21 +13,27 @@ const getActivity = () => {
     console.log(response);
 
     if(xhr.status === 200) {
-      const questionElement = document.getElementById('question');
-      const answerElement = document.getElementById('answer');
-
-      questionElement.innerHTML = response[0].question;
-      answerElement.innerHTML = response[0].answer;
+      const questionElement = document.getElementById('cat-fact');
+      questionElement.innerHTML = response.data[0];
     }
     else {
-      alert(`Error with request`);
+      alert(`Bad request - ${xhr.status}`);
     }
+  };
+
+  /*
+  * We can also setup a callback function for onerror.
+  * The onerror callback is invoked when there is an error with the request.
+  * This is important to catch things like networks errors when the request cannot be made.
+  */
+  xhr.onerror = () => {
+    alert('Error with request');
   };
 
   // Specify the type of data contained in the reponse.
   xhr.responseType = 'json';
 
   // Use the open and send methods to send the request.
-  xhr.open('GET', 'http://jservice.io/api/random');
+  xhr.open('GET', 'https://meowfacts.herokuapp.com/');
   xhr.send();
 }

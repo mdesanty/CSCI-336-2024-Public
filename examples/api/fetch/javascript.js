@@ -1,41 +1,46 @@
 document.addEventListener('DOMContentLoaded', function() {
-  getEmoji();
+  getDadJoke();
 });
 
-const getEmoji = () => {
-  fetch('https://emojihub.yurace.pro/api/random')
+const getDadJoke = () => {
+  fetch('https://icanhazdadjoke.com/', {headers: {Accept: 'application/json'}})
     .then(function(response) {
       /*
-      * Here is the documentation for the API we are using: https://github.com/cheatsnake/emojihub
+      * Like with the XHR example, we need to check if the response was successful.
+      * the response.ok property is a boolean value that indicates whether the response was successful (status in the range 200-299) or not.
       *
-      * The .json() method of the response returns a Promise that resolves with a result of the response body
-      * parsed as JSON.
-      *
-      * Here is an example of the body that comes back from a response from https://emojihub.yurace.pro/api/random
-      * {
-      *     "name": "british indian ocean territory",
-      *     "category": "flags",
-      *     "group": "flags",
-      *     "htmlCode": [
-      *         "&#127470;",
-      *         "&#127476;"
-      *     ],
-      *     "unicode": [
-      *         "U+1F1EE",
-      *         "U+1F1F4"
-      *     ]
-      * }
-      *
-      * So in our next call to .then when the .json() promise resolves, the paramter for that method will be a
-      * JavaScript objects with the data above. We will call data.htmlCode[0] to get the HTML of the emoji.
-      *
-      * We include [0] because this is an array that can have multiple HTML codes for various versions of the emoji
-      * and we only want the first.
+      * We could also check the response.status property, but response.ok is a more convenient way to check if the request was successful.
+      * If we wanted to check the status, we could do something like this:
+      * if(response.status !== 200) {...}
       */
-      return response.json()
+      if(!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      else {
+        /*
+        * Here is the documentation for the API we are using: https://github.com/DadJokes-io/Dad_Jokes_API
+        *
+        * The .json() method of the response returns a Promise that resolves with a result of the response body
+        * parsed as JSON.
+        *
+        * Here is an example of the body that comes back from a response from https://icanhazdadjoke.com
+        * {
+        *   id: '3wPfFYorWvc',
+        *   joke: 'What do you call a snake who builds houses? A boa constructor!',
+        *   status: 200
+        * }
+        *
+        * So in our next call to .then when the .json() promise resolves, the paramter for that method will be a
+        * JavaScript objects with the data above. We will call data.joke to get the text of the joke payload.
+        */
+        return response.json();
+      }
     })
     .then(function(data) {
-      const emojiElement = document.getElementById('emoji');
-      emojiElement.innerHTML = data.htmlCode[0];
+      const jokeElement = document.getElementById('joke');
+      jokeElement.innerHTML = data.joke;
+    })
+    .catch(function(error) {
+      alert(error);
     });
 }
