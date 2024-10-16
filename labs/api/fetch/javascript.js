@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-  getPun();
+  getDoggo();
 });
 
-const getPun = () => {
+const getDoggo = () => {
 
 }
