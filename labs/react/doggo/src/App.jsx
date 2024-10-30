@@ -1,10 +1,10 @@
 import './App.css';
-import Pun from './components/pun';
+import Doggo from './components/doggo';
 
 function App() {
   return (
     <div>
-      <Pun header="I've got a pun for you" />
+      <Doggo header="Here's a doggo!" />
     </div>
   );
 }
